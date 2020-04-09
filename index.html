@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Clock</title>
+<script type="text/javascript">
+	var txt;
+
+	function clock() {
+		var time = new Date();
+		txt = time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+		document.getElementById('t1').value = txt;
+	}
+	setInterval(clock, 1000);
+
+	function check() {
+		var alarm = document.getElementById('t2').value;
+		if (alarm === txt) {
+			var audio = new Audio('alarm-clock.mp3');
+			audio.play();
+		}
+	}
+	setInterval(check, 1000);
+
+</script>
+</head>
+<body>
+	<table style="background-color: black; height: 100px; width: 200px; margin: 100px; border: solid; color: gray;">	
+		<th style="color: red; font-size: 30px;padding: 10px">Timer</th>
+		<tr>
+			<td><input type="text" id="t1" style="border:1; solid; width: 130px; height: 30px; margin: 25px; font-size:32px;"/></td>
+		</tr>
+		<tr>
+			<td><div style="font-size: 20px; color:silver; margin-left: 25px">Enter the alarm:</div></td>
+		</tr>
+		<tr>
+			<td><input type="text" id="t2" style="border:1; solid; width: 130px; height: 30px; margin-left: 25px; font-size:32px;" /></td>
+		</tr>
+		<tr>
+			<td><input type="button" id="b" style="border:1; solid; width: 130px; height: 30px; margin: 25px; font-size:32px; color: red;" value="Set The Alarm" onclick="check()"  /></td>
+		</tr>
+	</table>
+	
+</body>
+</html>
